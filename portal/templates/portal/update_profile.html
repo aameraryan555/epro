@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+        {% if form_invalid %}
+            <span class="alert alert-danger">{{ form_invalid }}</span>
+        {% endif %}
+        <div class="jumbotron container text-cneter">
+            <h3>{{ candidate.full_name }}</h3>
+            {% if form %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table table-stripped">
+                        {{ form.as_table }}
+                    </table>
+                    <button type="submit">Update</button>
+
+                </form>
+            {% endif %}
+        </div>
+{% endblock %}

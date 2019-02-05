@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    {% if candidate %}
+        <div class="jumbotron container text-cneter">
+            {% if messages %}
+                {% for message in messages %}
+                    <span class="alert alert-success">{{ message }}</span>
+                {% endfor %}
+            {% endif %}
+            <h3>{{ candidate.full_name }}</h3>
+
+            <table class="table table-stripped table-bordered">
+                <tr>
+                    <td class="info">First Name</td><td class="active">{{ candidate.first_name }}</td>
+                    <td class="info">Last Name</td><td class="active">{{ candidate.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class="info">Full Name</td><td colspan="3" class="active">{{ candidate.full_name }}</td>
+                </tr>
+                <tr>
+                    <td class="info">City</td><td colspan="3" class="active">{{ candidate.city }}</td>
+                </tr>
+                <tr>
+                    <td class="info">Zip Code</td><td colspan="3" class="active">{{ candidate.zip_code }}</td>
+                </tr>
+                <tr>
+                    <td class="info">Qualification</td><td colspan="3" class="active">{{ candidate.qualification }}</td>
+                </tr>
+                <tr>
+                    <td class="info">Experience</td><td colspan="3" class="active">{{ candidate.experience }}</td>
+                </tr>
+                <tr>
+                    <td class="info">Resume</td><td colspan="3" class="active">{{ candidate.resume }}</td>
+                </tr>
+            </table>
+                    <a href="{% url "update_profile" %}"><button class="btn btn-info">Update Your Profile</button></a>
+            <hr><br>
+        </div>
+    {% endif %}
+{% endblock %}
